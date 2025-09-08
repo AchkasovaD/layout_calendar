@@ -1,10 +1,10 @@
 $day-size: 100px;
 $day-border: 1px;
-$day-total-size: $day-size + (2 * $day-border);
 $gap: 1px;
 $columns: 7;
-$padding: 10px;
-$pre-calendar-width: ($columns * $day-total-size) + (($columns - 1) * $gap);
+$padding-total: 10px;
+$padding: $padding-total / 2;
+$pre-calendar-width: ($columns * $day-size) + (($columns - 1) * $gap);
 $calendar-width: $pre-calendar-width + (2 * $padding);
 $font-family: Arial, Helvetica, sans-serif;
 $font-size: 30px;

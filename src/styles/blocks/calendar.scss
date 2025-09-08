@@ -3,8 +3,7 @@
   flex-wrap: wrap;
   gap: $gap;
   width: $calendar-width;
-  padding: $padding 17px;
-  counter-reset: day-counter;
+  padding: $padding;
   box-sizing: border-box;
 
   &__day {
@@ -17,8 +16,7 @@
     transition: all $transition-duration ease;
 
     &::before {
-      counter-increment: day-counter;
-      content: counter(day-counter);
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
@@ -34,6 +32,12 @@
     }
   }
 
+  @for $i from 1 through 31 {
+    &__day:nth-child(#{$i})::before {
+      content: '#{$i}';
+    }
+  }
+
   $start-days: (
     'mon': 0,
     'tue': 1,
@@ -43,10 +47,11 @@
     'sat': 5,
     'sun': 6,
   );
+  $day-step: $day-size + $gap;
 
   @each $name, $offset in $start-days {
     &--start-day-#{$name} &__day:first-child {
-      margin-left: $offset * ($day-total-size - $gap);
+      margin-left: $offset * $day-step;
     }
   }
 
